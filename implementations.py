@@ -68,7 +68,7 @@ def least_squares_SGD(y, tx, initial_w, max_iters, gamma):
     w = initial_w
     for n in range(max_iters):
         for y_batch, tx_batch in batch_iter(y, tx, batch_size=1):
-            grad = compute_gradienty_batch, tx_batch, w)
+            grad = (compute_gradienty_batch, tx_batch, w)
             w -= gamma * grad
     loss = compute_mse(y, tx, w)
     return w, loss
@@ -116,7 +116,7 @@ def logistic_gradient(y, tx, w):
     """
     # ***************************************************
     sig = sigmoid(-tx.dot(w))
-    return tx.T@(sig - y)      
+    return tx.T@(sig - y)
     # ***************************************************
     
 def logistic_regression(y, tx, initial_w, max_iters, gamma):
